@@ -29,6 +29,13 @@ const sunucu = http.createServer((istek, yanit) => {
   }
 
   const dosyaYolu = path.join(__dirname, 'public', adresYolu);
+  const publicKlasoru = path.join(__dirname, 'public');
+
+  if (!dosyaYolu.startsWith(publicKlasoru + path.sep)) {
+    yanit.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+    yanit.end('Sayfa bulunamadı');
+    return;
+  }
 
   fs.readFile(dosyaYolu, (hata, icerik) => {
     if (hata) {
