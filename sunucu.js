@@ -1,4 +1,6 @@
 const http = require('http');
+const fs = require('fs');
+const path = require('path');
 
 const PORT = 3000;
 
@@ -14,8 +16,17 @@ const sunucu = http.createServer((istek, yanit) => {
     return;
   }
 
-  yanit.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
-  yanit.end('Sunucu çalışıyor');
+  const dosyaYolu = path.join(__dirname, 'public', 'index.html');
+
+  fs.readFile(dosyaYolu, (hata, icerik) => {
+    if (hata) {
+      yanit.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+      yanit.end('Sayfa bulunamadı');
+      return;
+    }
+    yanit.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    yanit.end(icerik);
+  });
 });
 
 sunucu.listen(PORT, () => {
