@@ -4,6 +4,12 @@ const path = require('path');
 
 const PORT = 3000;
 
+const ICERIK_TURLERI = {
+  '.html': 'text/html; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
+  '.js': 'text/javascript; charset=utf-8'
+};
+
 const sunucu = http.createServer((istek, yanit) => {
   console.log(istek.method + ' ' + istek.url);
 
@@ -16,7 +22,12 @@ const sunucu = http.createServer((istek, yanit) => {
     return;
   }
 
-  const dosyaYolu = path.join(__dirname, 'public', 'index.html');
+  let adresYolu = istek.url;
+  if (adresYolu === '/') {
+    adresYolu = '/index.html';
+  }
+
+  const dosyaYolu = path.join(__dirname, 'public', adresYolu);
 
   fs.readFile(dosyaYolu, (hata, icerik) => {
     if (hata) {
@@ -24,7 +35,9 @@ const sunucu = http.createServer((istek, yanit) => {
       yanit.end('Sayfa bulunamadı');
       return;
     }
-    yanit.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    const uzanti = path.extname(dosyaYolu);
+    const tur = ICERIK_TURLERI[uzanti] || 'application/octet-stream';
+    yanit.writeHead(200, { 'Content-Type': tur });
     yanit.end(icerik);
   });
 });
