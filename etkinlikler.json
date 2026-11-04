@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "baslik": "Uluslararası Öğrenci Festivali",
+    "tur": "topluluk",
+    "tarih": "2026-05-18",
+    "yer": "Erdoğan Akdağ Kongre Kültür Merkezi",
+    "kontenjan": 400
+  },
+  {
+    "id": 2,
+    "baslik": "Sektörün Dönüşen Yetkinlikleri ve Kariyer Fırsatları (KARİYERFEST'26 Paneli)",
+    "tur": "soylesi",
+    "tarih": "2026-10-12",
+    "yer": "Erdoğan Akdağ Kongre ve Kültür Merkezi",
+    "kontenjan": 300
+  },
+  {
+    "id": 3,
+    "baslik": "Pratik İlk Yardım Atölyesi",
+    "tur": "atolye",
+    "tarih": "2026-11-04",
+    "yer": "Bilim İletişimi Ofisi",
+    "kontenjan": 30
+  },
+  {
+    "id": 4,
+    "baslik": "KARİYERFEST'26 - Ambulansını Yürüten Kazanır CRP Yarışması",
+    "tur": "topluluk",
+    "tarih": "2026-10-12",
+    "yer": "Erdoğan Akdağ Kongre ve Kültür Merkezi",
+    "kontenjan": 60
+  },
+  {
+    "id": 5,
+    "baslik": "Godot ile İlk Oyunum Atölyesi",
+    "tur": "atolye",
+    "tarih": "2026-11-18",
+    "yer": "Mühendislik Fakültesi Bilgisayar Laboratuvarı 1",
+    "kontenjan": 30
+  },
+  {
+    "id": 6,
+    "baslik": "Oyun Geliştirme Topluluğu Tanışma Toplantısı",
+    "tur": "topluluk",
+    "tarih": "2026-11-12",
+    "yer": "Kültür Merkezi Toplantı Salonu",
+    "kontenjan": 60
+  }
+]
