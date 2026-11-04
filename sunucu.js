@@ -22,7 +22,8 @@ const sunucu = http.createServer((istek, yanit) => {
     return;
   }
 
-  let adresYolu = istek.url;
+  const adres = new URL(istek.url, 'http://localhost');
+  let adresYolu = adres.pathname;
   if (adresYolu === '/') {
     adresYolu = '/index.html';
   }
