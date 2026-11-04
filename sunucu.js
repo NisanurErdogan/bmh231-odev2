@@ -23,6 +23,19 @@ const sunucu = http.createServer((istek, yanit) => {
   }
 
   const adres = new URL(istek.url, 'http://localhost');
+    if (adres.pathname === '/api/etkinlikler') {
+    const jsonYolu = path.join(__dirname, 'etkinlikler.json');
+    fs.readFile(jsonYolu, 'utf8', (hata, veri) => {
+      if (hata) {
+        yanit.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+        yanit.end(JSON.stringify({ hata: 'Veriler okunamadı' }));
+        return;
+      }
+      yanit.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+      yanit.end(veri);
+    });
+    return;
+  }
   let adresYolu = adres.pathname;
   if (adresYolu === '/') {
     adresYolu = '/index.html';
