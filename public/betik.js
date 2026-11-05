@@ -20,7 +20,7 @@ function kartOlustur(etkinlik) {
   etiket.className = 'etiket etiket-' + etkinlik.tur;
   etiket.textContent = TUR_ADLARI[etkinlik.tur] || etkinlik.tur;
 
-  const baslik = document.createElement('h3');
+  const baslik = document.createElement('h2');
   baslik.textContent = etkinlik.baslik;
 
   const tarih = document.createElement('p');

@@ -103,7 +103,7 @@ section {
   padding: 16px;
 }
 
-.kart h3 {
+.kart h2 {
   margin: 8px 0;
   font-size: 1.1rem;
 }
@@ -177,8 +177,7 @@ footer {
   text-align: center;
 }
 
-@media (max-width: 600px) {
-  .ust-bant,
+@media (max-width: 720px) {
   .arac-cubugu {
     flex-direction: column;
     align-items: stretch;
