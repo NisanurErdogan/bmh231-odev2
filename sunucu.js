@@ -46,6 +46,33 @@ const sunucu = http.createServer((istek, yanit) => {
     });
     return;
   }
+    const idEsle = adres.pathname.match(/^\/api\/etkinlikler\/(\d+)$/);
+  if (idEsle) {
+    const id = Number(idEsle[1]);
+    const jsonYolu = path.join(__dirname, 'etkinlikler.json');
+    fs.readFile(jsonYolu, 'utf8', (hata, veri) => {
+      let etkinlikler;
+      try {
+        if (hata) throw hata;
+        etkinlikler = JSON.parse(veri);
+      } catch (e) {
+        yanit.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+        yanit.end(JSON.stringify({ hata: 'Veriler okunamadı' }));
+        return;
+      }
+
+      const etkinlik = etkinlikler.find((e) => e.id === id);
+      if (!etkinlik) {
+        yanit.writeHead(404, { 'Content-Type': 'application/json; charset=utf-8' });
+        yanit.end(JSON.stringify({ hata: 'Etkinlik bulunamadı' }));
+        return;
+      }
+
+      yanit.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+      yanit.end(JSON.stringify(etkinlik));
+    });
+    return;
+  }
   let adresYolu = adres.pathname;
   if (adresYolu === '/') {
     adresYolu = '/index.html';
